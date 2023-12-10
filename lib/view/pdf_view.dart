@@ -1,10 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, deprecated_member_use
 
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:pdf_generator/model/employee_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -153,7 +153,7 @@ class _NewPDFTestState extends State<NewPDFTest> {
             pw.Table.fromTextArray(
               headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold),
               cellAlignment: pw.Alignment.center,
-              headerDecoration: pw.BoxDecoration(color: PdfColors.grey300),
+              headerDecoration: const pw.BoxDecoration(color: PdfColors.grey300),
               headers: ['ID', 'Name', 'Designation', 'Salary'],
               data: getEmployeeData()
                   .map((e) => [e.id, e.name, e.designation, e.salary])
@@ -174,14 +174,6 @@ class _NewPDFTestState extends State<NewPDFTest> {
   }
 }
 
-class Employee {
-  final int id;
-  final String name;
-  final String designation;
-  final int salary;
-
-  Employee(this.id, this.name, this.designation, this.salary);
-}
 
 class EmployeeDataSource extends DataGridSource {
   List<DataGridRow> _employeeData = [];
